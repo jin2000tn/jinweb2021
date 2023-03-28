@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SV.Models.ChuongTrinhDaoTao>
+
+@{
+    ViewBag.Title = "Danh sách chương trình đào tạo";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Chương trình đào tạo</a>
+        </li>
+        <li>
+            <a href="#">Danh sách chương trình đào tạo</a>
+        </li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Danh sách chương trình đào tạo
+            </small>
+            <a class="btn btn-success btn-xs pull-right" href="~/Admin/ChuongTrinhDaoTao/ThemMoi">Thêm mới</a>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table  table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="center" style="width:50px">
+                                    STT
+                                </th>
+                                <th>
+                                    Icon
+                                </th>
+                                <th>
+                                    Tên chương trình
+                                </th>
+                                <th>
+                                    Mô tả
+                                </th>
+
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                i++;
+                                <tr>
+                                    <td>@i</td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Icon)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.TenChuongTrinh)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.MoTa)
+                                    </td>
+
+                                    <td>
+                                        <a class="btn btn-xs btn-info" href="~/Admin/ChuongTrinhDaoTao/CapNhat?id=@item.ID">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </a>
+                                        <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/ChuongTrinhDaoTao/Xoa?id=@item.ID' }">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

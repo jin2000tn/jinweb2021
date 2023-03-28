@@ -1,0 +1,29 @@
+﻿@model SV.Models.TrangGioiThieu
+
+@{
+    ViewBag.Title = Model.TenTrang;
+    Layout = "~/Views/shared/layout.cshtml";
+}
+
+<section id="mu-page-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-page-breadcrumb-area">
+                    <h2>@Model.TenTrang</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="mu-course-content">
+    <div class="container"> 
+        <div class="col-md-12 mu-course-container mu-blog-archive">
+            <article class="mu-blog-single-item">
+                <div class="mu-blog-description">
+                     @Html.Raw(Model.NoiDung) 
+                </div>
+            </article>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,129 @@
+﻿@model  SV.Models.SinhVien
+@{
+    ViewBag.Title = Model.HoVaTen;
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Quản lý tài khoản</a>
+        </li>
+        <li>
+            <a href="#">Thông tin</a>
+        </li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Sinh viên: @Model.HoVaTen
+            </small> 
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-3">
+            <table class="table  table-bordered table-hover">
+                <tr>
+                    <td colspan="2" style="text-align:center">
+                        <img src="@Model.AnhDaiDien" style="max-width:80%; height:auto" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Tên đăng nhập</td>
+                    <td>@Model.TenDangNhap</td>
+                </tr>
+                <tr>
+                    <td>Họ và tên</td>
+                    <td>@Model.HoVaTen</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại</td>
+                    <td>@Model.SoDienThoai</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>@Model.Email</td>
+                </tr>
+                <tr>
+                    <td>Ngày sinh</td>
+                    <td>@string.Format("{0:dd/MM/yyyy}", Model.NgaySinh)</td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ</td>
+                    <td>@Model.DiaChi</td>
+                </tr>
+                <tr>
+                    <td>Lớp sinh viên</td>
+                    <td>@Model.Lop</td>
+                </tr>  
+                <tr>
+                    <td>Trường</td>
+                    <td>@Model.Truong</td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align:center">
+                        <a class="btn btn-xs @Html.Raw(Model.isKhoa==true?"btn-success":"btn-danger") " href="/Admin/TaiKhoanSinhVien/Khoa?id=@Model.ID">
+                            @Html.Raw(Model.isKhoa == true ? "Mở khóa" : "Khóa")
+                        </a>
+                        <a class="btn btn-xs btn-danger" href="/Admin/TaiKhoanSinhVien/ResetMatKhau?id=@Model.ID">
+                            Reset mật khẩu (123456)
+                        </a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="col-xs-9">
+            <h4>Yêu cầu</h4>
+            <table class="table  table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center" style="width:100px">
+                            ID
+                        </th> 
+                        <th>Yêu cầu</th>
+                        <th>Câu trả lời</th>
+                        <th>Đã trả lời</th>
+                        <th>Thời gian</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{ 
+                        foreach (var item in new SV.Models.Map.mapYeuCau().DanhSachTheoSinhVien(Model.ID))
+                        { 
+                            <tr>
+                                <td>@item.ID</td>
+                                <td style="max-width:300px">
+                                    @item.NoiDung
+                                </td>
+                                <td>
+                                    @item.TraLoi
+                                </td>
+                                <td>
+                                    @item.DaTraLoi
+                                </td>
+                                <td>
+                                    @string.Format("{0:HH:mm}", item.ThoiGian) <br />
+                                    @string.Format("{0:dd-MM-yyyy}", item.ThoiGian)
+                                </td>
+                                <td>
+                                    <a class="btn btn-xs btn-info" href="~/Admin/QuanLyYeuCau/CapNhat?id=@item.ID">
+                                        <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                    </a>
+                                    <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/QuanLyYeuCau/Xoa?id=@item.ID' }">
+                                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

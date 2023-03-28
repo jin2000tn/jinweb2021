@@ -1,0 +1,74 @@
+﻿@model List<SV.Models.YeuCau>
+@{
+    ViewBag.Title = "Yêu cầu";
+    Layout = "~/Views/shared/layout.cshtml";
+    var user = SV.App_Start.SessionConfig.GetTaiKhoan();
+}
+<section id="mu-page-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-page-breadcrumb-area">
+                    <h2>Gửi yêu cầu hỗ trợ</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="mu-course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8"> 
+                <div class="comments">
+                    <ul class="commentlist">
+                        @foreach (var item in Model)
+                        {
+                            <li>
+                                <div class="media" style="padding:15px 0px;border-bottom:1px solid #f2f2f2">
+                                    <div class="media-left">
+                                        <img alt="img" src="@user.AnhDaiDien" class="img-circle" style="width:100px; height:100px">
+                                    </div>
+                                    <div class="media-body">
+                                        <h4 class="author-name">@item.NoiDung</h4>
+                                        <span class="comments-date"> Thời gian gửi: @string.Format("{0:dd-MM-yyyy HH:mm}", item.ThoiGian)</span>
+                                        <p style="margin-top:15px">
+                                            @if(item.DaTraLoi == true)
+                                            {
+                                                <span class="text-danger">@item.TraLoi</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-success">Đang chờ trả lời</span>
+                                            }
+                                        </p> 
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </div>
+
+            </div>
+            <div class="col-md-4">
+                <!-- start sidebar -->
+
+                <aside class="mu-sidebar">
+                    <!-- start single sidebar -->
+                    <div class="col-md-push-12">
+                        <h4 class="text-center">GỬI YÊU CẦU</h4>
+                        @*  Chỗ này điền link vào*@
+                        <form action="~/gui-yeu-cau" method="post">
+                            <p class="comment-form-author">
+                                <label for="authort">Nội dung<span class="required">*</span></label>
+                                <textarea required="required" aria-required="true" rows="8" cols="45" name="NoiDung" class="form-control"></textarea>
+                            </p>
+                            <p class="form-submit text-center">
+                                <input type="submit" value="Gửi" class="btn btn-success" name="submit">
+                            </p>
+                        </form>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>

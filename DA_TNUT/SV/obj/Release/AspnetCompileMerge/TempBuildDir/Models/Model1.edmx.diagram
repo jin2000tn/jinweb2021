@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bdfd22e7e260465aa4ae4b75e55b0379" Name="Diagram1">
+        <EntityTypeShape EntityType="SV_TNUTModel.BaiDang" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="SV_TNUTModel.BaiVietTuyenSinh" Width="1.5" PointX="7.75" PointY="8.125" />
+        <EntityTypeShape EntityType="SV_TNUTModel.CauHinh" Width="1.5" PointX="0.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SV_TNUTModel.ChucNang" Width="1.5" PointX="5.75" PointY="1" />
+        <EntityTypeShape EntityType="SV_TNUTModel.ChuongTrinhDaoTao" Width="1.5" PointX="2.75" PointY="7.75" />
+        <EntityTypeShape EntityType="SV_TNUTModel.Comment" Width="1.5" PointX="5.25" PointY="4.375" />
+        <EntityTypeShape EntityType="SV_TNUTModel.LienHeTuyenSinh" Width="1.5" PointX="10" PointY="8" />
+        <EntityTypeShape EntityType="SV_TNUTModel.PhanQuyen" Width="1.5" PointX="8" PointY="0.875" />
+        <EntityTypeShape EntityType="SV_TNUTModel.SinhVien" Width="1.5" PointX="0.75" PointY="2" />
+        <EntityTypeShape EntityType="SV_TNUTModel.Slide" Width="1.5" PointX="7.75" PointY="4" />
+        <EntityTypeShape EntityType="SV_TNUTModel.Slide_HinhAnh" Width="1.5" PointX="10" PointY="4" />
+        <EntityTypeShape EntityType="SV_TNUTModel.Slide_TinTuc" Width="1.5" PointX="10.75" PointY="0.75" />
+        <EntityTypeShape EntityType="SV_TNUTModel.sysdiagram" Width="1.5" PointX="0.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SV_TNUTModel.Table_Test" Width="1.5" PointX="2.75" PointY="10.75" />
+        <EntityTypeShape EntityType="SV_TNUTModel.TaiKhoanNV" Width="1.5" PointX="5.75" PointY="8" />
+        <EntityTypeShape EntityType="SV_TNUTModel.TaiLieu" Width="1.5" PointX="4.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SV_TNUTModel.TinTuc" Width="1.5" PointX="6.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SV_TNUTModel.TrangGioiThieu" Width="1.5" PointX="8.75" PointY="11.75" />
+        <EntityTypeShape EntityType="SV_TNUTModel.YeuCau" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="SV_TNUTModel.FK_BaiDang_SinhVien1" />
+        <AssociationConnector Association="SV_TNUTModel.FK_Comment_BaiDang" />
+        <AssociationConnector Association="SV_TNUTModel.FK_LienHeTuyenSinh_BaiVietTuyenSinh" />
+        <AssociationConnector Association="SV_TNUTModel.FK_PhanQuyen_ChucNang1" />
+        <AssociationConnector Association="SV_TNUTModel.FK_PhanQuyen_TaiKhoanNV" />
+        <AssociationConnector Association="SV_TNUTModel.FK_YeuCau_SinhVien" />
+        <AssociationConnector Association="SV_TNUTModel.FK_Slide_HinhAnh_Slide" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

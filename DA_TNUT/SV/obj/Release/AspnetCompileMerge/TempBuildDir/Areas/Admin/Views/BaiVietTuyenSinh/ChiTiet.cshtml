@@ -1,0 +1,76 @@
+﻿@using SV.Models
+@model SV.Models.BaiVietTuyenSinh 
+@{
+    ViewBag.Title = Model.TenBaiViet;
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="~/Admin/BaiVietTuyenSinh">Bài viết tuyển sinh</a>
+        </li> 
+        <li>
+            <a href="~/Admin/BaiVietTuyenSinh/ChiTiet">Chi Tiết</a>
+        </li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                @Model.TenBaiViet
+            </small>
+            <a class="btn btn-warning btn-xs pull-right" href="~/Admin/BaiVietTuyenSinh/CapNhat?id=@Model.ID">Cập nhật</a>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-4">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <td>Hình ảnh</td>
+                        <td>
+                            <a href="~/Admin/BaiVietTuyenSinh/ChiTiet?id=@Model.ID">
+                                <img src="@Model.HinhAnh" style="height:60px" />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tiêu đề</td>
+                        <td>
+                            <a href="~/Admin/BaiVietTuyenSinh/ChiTiet?id=@Model.ID">
+                                @Model.TenBaiViet
+                            </a>
+                        </td>
+                    </tr> 
+                    <tr>
+                        <td>Thời gian</td>
+                        <td>
+                            @string.Format("{0:dd/MM/yyyy}", Model.NgayBatDau) -  @string.Format("{0:dd/MM/yyyy}", Model.NgayKetThuc)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Link seo</td>
+                        <td>@Model.LinkSeo</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center">
+                            <a class="btn btn-xs btn-info" href="~/Admin/BaiVietTuyenSinh/CapNhat?id=@Model.ID">
+                                <i class="ace-icon fa fa-pencil bigger-120"></i>
+                            </a>
+                            <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/BaiVietTuyenSinh/Xoa?id=@Model.ID' }">
+                                <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                            </button>
+                        </td>
+                    </tr>
+            </table>
+        </div> 
+        <div class="col-md-8">
+            @Html.Raw(Model.NoiDung)
+        </div>
+    </div>
+</div>
+

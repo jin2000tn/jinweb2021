@@ -1,0 +1,98 @@
+﻿@model IEnumerable<SV.Models.YeuCau>
+
+@{
+    ViewBag.Title = "Quản lý yêu cầu";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+    string sinhVien = ViewBag.sinhVien;
+    bool? trangThai = ViewBag.trangThai;
+}
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Quản lý yêu cầu</a>
+        </li>
+        <li>
+            <a href="#">Danh sách</a>
+        </li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Danh sách  yêu cầu
+            </small> 
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 no-padding" style="margin-bottom:15px">
+            <form>
+                <div class="col-xs-2">
+                     <input class="form-control" name="sinhVien" value="@sinhVien" placeholder="Nhập tên sinh viên" />
+                </div>
+                <div class="col-xs-2">
+                    <select name="trangThai" class="form-control form-group-sm">
+                        <option value="false" @Html.Raw(trangThai == false ? "selected" : "")>Chưa trả lời</option>
+                        <option value="true" @Html.Raw(trangThai == true ? "selected" : "")>Đã trả lời</option>
+                    </select>
+                </div>
+                <button class="btn btn-sm btn-info">Xem</button>
+            </form>
+        </div>
+        <div class="col-xs-12">
+            <table class="table  table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center" style="width:100px">
+                            ID
+                        </th>
+                        <th>Sinh viên</th>
+                        <th>Yêu cầu</th>
+                        <th>Câu trả lời</th>
+                        <th>Đã trả lời</th>
+                        <th>Thời gian</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        <tr>
+                            <td>@item.ID</td>
+
+                            <td>
+                                @item.SinhVien.HoVaTen
+                            </td>
+                            <td style="max-width:300px">
+                                @item.NoiDung
+                            </td>
+                            <td>
+                                @item.TraLoi
+                            </td>
+                            <td>
+                                @item.DaTraLoi
+                            </td>
+                            <td>
+                                @string.Format("{0:HH:mm}", item.ThoiGian) <br />
+                                @string.Format("{0:dd-MM-yyyy}", item.ThoiGian)
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-info" href="~/Admin/QuanLyYeuCau/CapNhat?id=@item.ID">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </a>
+                                <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/QuanLyYeuCau/Xoa?id=@item.ID' }">
+                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

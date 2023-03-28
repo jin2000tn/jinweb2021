@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SV.Models.TaiLieu>
+
+@{
+    ViewBag.Title = "Xem tài liệu";
+    Layout = "~/Views/shared/layout.cshtml";
+}
+
+<h2>XemTaiLieu</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTaiLieu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThongTin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DuongDanFile)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGianUpload)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NguoiUpload)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThaiPheDuyet)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaiLieuTheo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTaiLieu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThongTin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DuongDanFile)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGianUpload)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NguoiUpload)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThaiPheDuyet)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaiLieuTheo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

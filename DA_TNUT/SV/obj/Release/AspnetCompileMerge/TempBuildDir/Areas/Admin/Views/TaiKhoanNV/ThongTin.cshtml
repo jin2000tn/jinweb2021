@@ -1,0 +1,97 @@
+﻿@model SV.Models.TaiKhoanNV
+
+@{
+    ViewBag.Title = "Thông tin tài khoản Admin";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+}
+
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Quản lý tài khoản admin</a>
+        </li>
+        <li>
+            <a href="#">Thông tin tài khoản</a>
+        </li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Thông tin tài khoản: @Model.Username
+            </small>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="col-md-4">
+                <table class="table">
+                    <tr>
+                        <td>
+                            Tên đăng nhập
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Username)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Họ và tên
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.HoVaTen)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            Email
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.Email)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" style="text-align:center">
+                            <a class="btn btn-xs btn-info" href="/Admin/TaiKhoanNV/DoiMatKhau">
+                                Đổi mật khẩu
+                            </a> 
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-md-8">
+                <h4>Phân quyền</h4>
+                <table class="table table-bordered">
+                    @{
+                        var listNhom = new SV.Models.Map.mapPhanQuyen().DanhSachNhomChucNang();
+                        var listChucNang = new SV.Models.Map.mapPhanQuyen().DanhSachChucNang();
+                        var listPhanQuyen = new SV.Models.Map.mapPhanQuyen().ThongTinPhanQuyen(Model.ID);
+
+                        foreach (var nhom in listNhom)
+                        {
+                            var cnTrongNhom = listChucNang.Where(m => m.Nhom == nhom).ToList();
+
+                            <tr>
+                                <td>@nhom</td>
+                                @foreach (var chucNang in cnTrongNhom)
+                                {
+                                    var kiemTra = listPhanQuyen.Count(m => m.maChucNang == chucNang.MaChucNang);
+                                    <td style="text-align:center">
+                                        <p>
+                                            <input type="checkbox" @Html.Raw(kiemTra > 0 ? "checked" : "")   />
+                                        </p>
+                                        @chucNang.GhiChu
+                                    </td>
+                                }
+                            </tr>
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

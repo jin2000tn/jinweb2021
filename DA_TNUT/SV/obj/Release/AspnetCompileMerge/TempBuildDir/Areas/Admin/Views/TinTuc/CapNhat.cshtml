@@ -1,0 +1,111 @@
+﻿@model SV.Models.TinTuc
+
+@{
+    ViewBag.Title = "Cập nhật tin tức";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+}
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="~/Admin/TinTuc">Tin Tức</a>
+        </li>
+        <li>
+            <a href="~/Admin/TinTuc/CapNhat">Cập nhật</a>
+        </li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Cập nhật tin tức
+            </small>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    @using (Html.BeginForm("CapNhat", "TinTuc", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.HiddenFor(m => m.ID)
+                        @Html.HiddenFor(m => m.HinhAnh)
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Tiêu Đề</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Link seo</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.LinkSeo, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.LinkSeo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Tóm Tắt</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TomTat, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TomTat, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Tác Giả</label>
+                                <div class="col-md-4">
+                                    @Html.EditorFor(model => model.TacGia, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TacGia, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-2">Thời Gian</label>
+                                <div class="col-md-4">
+                                    @Html.TextBoxFor(m => m.ThoiGian, "{0:yyyy-MM-dd}", new { @class = "form-control", type = "date" })
+                                    @Html.ValidationMessageFor(model => model.ThoiGian, "", new { @class = "text-danger" })
+                                </div>
+                            </div>  
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Hình Ảnh</label>
+                                <div class="col-md-4">
+                                    <input type="file" name="file" class="form-control" />
+                                    @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+                                </div>
+                                <label class="control-label col-md-2">Đánh dấu sự kiến</label>
+                                <div class="col-md-4">
+                                    <select name="isSuKien" class="form-control">
+                                        <option value="false" @Html.Raw(Model.isSuKien ==false?"selected":"")>Không</option>
+                                        <option value="true" @Html.Raw(Model.isSuKien ==true?"selected":"")>Có</option>
+                                    </select>
+                                </div>
+                            </div> 
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Nội dung</label>
+                                <div class="col-md-10">
+                                    <textarea name="NoiDung" id="noiDung" class="form-control">@Model.NoiDung</textarea>
+                                    @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Lưu" class="btn btn-success btn-sm" />
+                                    <a  class="btn btn-danger btn-sm" href="~/Admin/TinTuc/ChiTiet?id=@Model.ID" >Hủy</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        CKEDITOR.replace("noiDung");
+    </script>
+}

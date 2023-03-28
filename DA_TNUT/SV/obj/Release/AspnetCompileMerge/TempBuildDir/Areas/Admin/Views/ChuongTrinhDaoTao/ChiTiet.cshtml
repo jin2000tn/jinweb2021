@@ -1,0 +1,65 @@
+﻿@using SV.Models
+@model SV.Models.ChuongTrinhDaoTao
+
+@{
+    ViewBag.Title = "Chi Tiết";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="~/Admin/ChuongTrinhDaoTao">Chương trình đào tạo</a>
+        </li>
+        <li>
+            <a href="~/Admin/ChuongTrinhDaoTao/DanhSach">Danh sách</a>
+        </li>
+        <li>
+            <a href="~/Admin/ChuongTrinhDaoTao/ChiTiet">Chi Tiết</a>
+        </li>
+    </ul>
+</div>
+<section id="mu-course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-course-content-area">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <!-- start course content container -->
+                            <div class="mu-course-container mu-blog-archive">
+                                <div class="row">
+                                    <div class="col-md-12 col-sm-9">
+                                        <article class="mu-blog-single-item">
+                                            <figure class="mu-blog-single-img">
+                                                <figcaption class="mu-blog-caption">
+                                                    <h3><a href="#">@Model.TenChuongTrinh</a></h3>
+                                               
+                                            <div class="mu-blog-meta">
+                                                <a href="#">
+                                                    @Model.Icon
+                                                </a>
+                                            </div>
+                                            <div>
+                                                <a href="#">
+                                                    @Model.MoTa
+                                                </a>
+                                            </div>
+
+
+                                            <div class="mu-blog-description">
+                                                <p>Nội Dung: @Html.Raw(Model.NoiDung)</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,68 @@
+﻿@model SV.Models.LienHeTuyenSinh
+
+@{
+    ViewBag.Title = "Đăng ký tư vấn thành công";
+    Layout = "~/Views/shared/layout.cshtml";
+}
+<section id="mu-course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-course-container mu-blog-archive" style="text-align:center">
+                    <article class="mu-blog-single-item">
+                        <figure class="mu-blog-single-img">
+                            <figcaption class="mu-blog-caption">
+                                <h3>
+                                    <a href="#" style="color:#01bafd">
+                                        Bạn đã đăng ký nhận tư vấn thành công
+                                    </a>
+                                </h3>
+                            </figcaption>
+                        </figure>
+                        <div class="mu-blog-meta">
+                            <a href="#"></a>
+                        </div>
+                        <div class="mu-blog-description">
+                            <p>Cán bọ phụ trách tuyển sinh sẽ liên hệ với bạn trong thời gian sớm nhất. Xin cảm ơn</p>
+                        </div>
+                    </article>
+                </div>
+            </div> 
+        </div>
+    </div>
+</section>
+<section id="mu-from-blog" style="padding-top:0px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-from-blog-area">
+                    <!-- start title -->
+                    <div class="mu-title">
+                        <h2>Thông tin tuyển sinh khác</h2>
+                    </div>
+                    <div class="mu-from-blog-content">
+                        <div class="row">
+                            @foreach (var item in new SV.Models.Map.mapBaiVietTuyenSinh().DanhSachDangTuyen())
+                            {
+                                <div class="col-md-4 col-sm-4">
+                                    <article class="mu-blog-single-item">
+                                        <figure class="mu-blog-single-img">
+                                            <a href="/tuyen-sinh/@item.LinkSeo" style="background:url(@item.HinhAnh); height:250px; width:100%; background-size:cover; background-position:center">
+                                            </a>
+                                            <figcaption class="mu-blog-caption">
+                                                <h4><a href="~/tuyen-sinh/@item.LinkSeo">@item.TenBaiViet</a></h4>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="mu-blog-meta">
+                                            <a href="/tuyen-sinh/@item.LinkSeo">@string.Format("{0:dd/MM/yyyy}", item.NgayBatDau) - @string.Format("{0:dd/MM/yyyy}", item.NgayKetThuc)</a>
+                                        </div>
+                                    </article>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,136 @@
+﻿@using SV.Models
+@{
+    ViewBag.Title = "Cộng đồng sinh viên Đại học KTCN Thái Nguyên";
+    Layout = "~/Views/shared/layout.cshtml";
+}
+
+@{
+    var slide = new SV.Models.Map.mapSlide().DanhSach("TrangChu");
+    if (slide != null)
+    {
+        var listHinhAnh = new SV.Models.Map.mapSlide_HinhAnh().DanhSach(slide.ID);
+        if (listHinhAnh.Count() > 0)
+        {
+            <section id="mu-slider">
+                @foreach (var item in listHinhAnh)
+                {
+                    <div class="mu-slider-single">
+                        <div class="mu-slider-img">
+                            <figure>
+                                <img src="@item.HinhAnh" alt="img">
+                            </figure>
+                        </div>
+                        <div class="mu-slider-content">
+                            <h4>@item.TenHinhAnh</h4>
+                            <span></span>
+                            <h2>@item.TenHinhAnh</h2>
+                            <p>@item.MoTa</p>
+                            <a href="@item.LienKet" class="mu-read-more-btn">Chi tiết</a>
+                        </div>
+                    </div>
+                }
+            </section>
+        }
+    }
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-8 no-padding">
+            <div class="col-md-12">
+                <h3 class="title">Hôm nay có gì mới</h3>
+            </div>
+            <div class="col-md-12 no-padding">
+                @{
+                    int i = 0;
+                    foreach (var item in new SV.Models.Map.mapTinTuc().DanhSachTrangChu())
+                    {
+                        i++;
+                        <div class="col-md-6 col-sm-6 hot-news-item">
+                            <div class="img-title" style="background:url(@item.HinhAnh)">
+                                <h3><a href="~/tin-tuc/@item.LinkSeo">@item.TieuDe</a></h3>
+                            </div>
+                            <div class="info">
+                                @item.TacGia  | @string.Format("{0:dd-MM-yyyy}", item.ThoiGian) | <i class="fa fa-eye"></i>@item.LuotXem
+                            </div>
+                            <div class="desc">
+                                <p>@item.TomTat</p>
+                            </div>
+                        </div>
+                        if (i % 2 == 0)
+                        {
+                            <div class="clearfix"></div>
+                        }
+                    }
+                }
+            </div>
+
+            <div class="col-md-6">
+                <h3 class="title">Sự kiện</h3>
+                @foreach (var item in new SV.Models.Map.mapTinTuc().DanhSachSuKien())
+                {
+                    <div class="event-item">
+                        <div class="date">
+                            <span class="dayweek">@SV.Helper.Excute.ThuTrongTuan(item.ThoiGian.Value)</span>
+                            <span class="day">@string.Format("{0:dd/MM/yyyy}", item.ThoiGian)</span>
+                            <span class="number">@SV.Helper.Excute.ViewFutureDate(item.ThoiGian.Value)</span>
+                        </div>
+                        <div class="info">
+                            <a href="~/tin-tuc/@item.LinkSeo">@item.TieuDe</a>
+                            <p>
+                                @item.TomTat
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="col-md-6">
+                <h3 class="title">Tài liệu</h3>
+                @foreach (var item in new SV.Models.Map.mapTaiLieu().DanhSachTop(5))
+                {
+                    <div class="file-item">
+                        <div class="img">
+                            <a href="~/TaiLieu/TaiTaiLieu?id=@item.ID" title="Download"><img src="~/Theme/img/download.png" /></a>
+                        </div>
+                        <div class="info">
+                            <a href="~/TaiLieu/TaiTaiLieu?id=@item.ID" style="font-weight:bold">
+                                @item.TenTaiLieu
+                            </a>
+                            <span>@item.ThongTin</span>
+                            <a href="~/TaiLieu/TaiTaiLieu?id=@item.ID" style="font-size:12px">
+                                File: @System.IO.Path.GetFileName(item.DuongDanFile)
+                            </a>
+                            <p>
+                                <span>@item.NguoiUpload | </span>
+                                <span>@string.Format("{0:dd/MM/yyyy HH:mm}", item.ThoiGianUpload) | </span>
+                                <span>@Html.Raw(item.TrangThaiPheDuyet == true ? "Đã duyệt" : "Chưa duyệt")</span>
+                            </p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+
+
+        <div class="col-lg-4 col-md-4">
+            <h3 class="title">
+                Thảo luận
+                <a class="btn btn-xs  btn-info pull-right" href="~/thao-luan">Đăng bài</a>
+            </h3>
+            @foreach (var item in new SV.Models.Map.mapBaiDang().DanhSachTop(10))
+            {
+                <div class="col-md-12 post-small">
+                    <a href="~/thong-tin-thao-luan?post=@item.ID">
+                        <span class="name">@item.SinhVien.HoVaTen</span>
+                        <span class="pull-right date">@SV.Helper.Excute.ViewHistoryDate(item.ThoiGian ?? DateTime.Now) </span>
+                        <span class="pull-right comment"><i class="fa fa-eye"></i> @item.LuotXem | </span>
+                    </a>
+                    <p>@item.NoiDung</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

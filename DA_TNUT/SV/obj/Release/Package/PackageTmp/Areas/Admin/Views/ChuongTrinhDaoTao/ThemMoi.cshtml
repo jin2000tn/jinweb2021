@@ -1,0 +1,80 @@
+﻿@model SV.Models.ChuongTrinhDaoTao
+
+@{
+    ViewBag.Title = "Thêm chương trình đào tạo";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <a href="~/admin/ChuongTrinhDaoTao/danhsach">Chương trình đào tạo</a>
+        </li>
+        <li>
+            <a href="#">Thêm mới</a>
+        </li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Thêm chương trình đào tạo
+            </small> 
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken() 
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Tên chương trình</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TenChuongTrinh, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.TenChuongTrinh, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Mô tả</label>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Icon</label>
+                                <div class="col-md-2">
+                                    @Html.EditorFor(model => model.Icon, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Icon, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-2">Nội dung</label>
+                                <div class="col-md-10">
+                                    <textarea name="NoiDung" id="noiDung" class="form-control">@Model.NoiDung</textarea>
+                                    @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Lưu" class="btn btn-success btn-sm" />
+                                    <a href="~/Admin/ChuongTrinhDaoTao/DanhSach" class="btn btn-danger btn-sm">Hủy</a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script>
+        CKEDITOR.replace("noiDung");
+    </script>
+}

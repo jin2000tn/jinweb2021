@@ -1,0 +1,38 @@
+﻿@model SV.Models.SinhVien
+@{
+    ViewBag.Title = "Đổi mật khẩu";
+    Layout = "~/Views/shared/layout.cshtml";
+}
+<div class="container">
+    <div class="col-md-6 col-sm-offset-3" style="text-align:center">
+        <h3>Đổi mật khẩu</h3>
+    </div>
+    <div class="col-md-6 col-sm-offset-3" style="">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-horizontal">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="control-label col-md-4">Mật khẩu cũ(*)</label>
+                    <div class="col-md-8">
+                        <input type="password" name="matKhauCu" class="form-control" required="required" />
+                    </div>
+                </div> 
+                <div class="form-group">
+                    <label class="control-label col-md-4">Mật khẩu mới(*)</label>
+                    <div class="col-md-8">
+                        <input type="password" name="matKhauMoi" class="form-control" required="required" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-4 col-sm-8" style="text-align:center">
+                        <button type="submit" class="btn btn-success">Lưu</button>
+                        <a href="~/thong-tin-tai-khoan" class="btn btn-danger">Hủy</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

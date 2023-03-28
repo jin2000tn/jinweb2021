@@ -1,0 +1,129 @@
+﻿@using SV.Models
+@model SV.Models.Slide
+
+@{
+    ViewBag.Title = "Chi tiết Slide";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    var listImage = new SV.Models.Map.mapSlide_HinhAnh().DanhSach(Model.ID);
+    int i = 0;
+}
+
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Slide</a>
+        </li>
+        <li>
+            <a href="#">Chi tiết</a>
+        </li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Chi tiết slide
+            </small>
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class=" col-md-4">
+                    <h4>
+                        Thông tin
+                        <a class="btn btn-xs btn-info pull-right" href="~/Admin/Slide/CapNhat?id=@Model.ID">
+                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                        </a>
+                        <button class="btn btn-xs btn-danger pull-right" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/Slide/Xoa?id=@Model.ID' }">
+                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                        </button>
+                    </h4>
+                    <table class="table talbe-bordered">
+                        <tr>
+                            <td>ID</td>
+                            <td>@Model.ID</td>
+                        </tr>
+                        <tr>
+                            <td>Loại</td>
+                            <td>@Model.LoaiSlide</td>
+                        </tr>
+                        <tr>
+                            <td>Tên</td>
+                            <td>@Model.TenSlide</td>
+                        </tr>
+                        <tr>
+                            <td>Mô tả</td>
+                            <td>@Model.MoTa</td>
+                        </tr>
+                        <tr>
+                            <td>Từ ngày</td>
+                            <td>@Model.TuNgay</td>
+                        </tr>
+                        <tr>
+                            <td>Đến ngày</td>
+                            <td>@string.Format("{0:dd/MM/yyyy}", Model.DenNgay)</td>
+                        </tr>
+                        <tr>
+                            <td>Trạng thái hoạt động</td>
+                            <td> @Html.Raw(Model.isActive == true ? "Có" : "Không")</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-xs-8">
+                    <h4>
+                        Hình ảnh
+                        <a class="btn btn-success btn-xs pull-right" href="~/Admin/Slide_HinhAnh/ThemMoi?idSlide=@Model.ID">Thêm mới</a>
+                    </h4>
+                    <table class="table  table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="center" style="width:50px">
+                                    STT
+                                </th>
+                                <th>Hình ảnh</th>
+                                <th>Tên hình ảnh</th>
+                                <th>Mô tả</th>
+                                <th>Liên kết</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in listImage)
+                            {
+                                <tr>
+                                    <td>@item.ThuTu</td>
+                                    <td>
+                                        <img src="@item.HinhAnh" style="max-width:100px; height:auto" />
+                                    </td>
+                                    <td>
+                                        @item.TenHinhAnh
+                                    </td>
+                                    <td>@item.MoTa</td>
+                                    <td>
+                                        @item.LienKet
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-xs btn-info" href="~/Admin/Slide_HinhAnh/CapNhat?id=@item.ID">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </a>
+                                        <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href = '/Admin/Slide_HinhAnh/Xoa?id=@item.ID&idslide=@Model.ID' }">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

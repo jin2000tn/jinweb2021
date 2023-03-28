@@ -1,0 +1,115 @@
+﻿@model IEnumerable<SV.Models.TaiLieu>
+@{
+    ViewBag.Title = "Văn bản";
+    Layout = "~/Views/shared/layout.cshtml";
+    int i = 0;
+    string nhom = ViewBag.nhom;
+}
+<style>
+    .margin {
+        margin-bottom: 45px;
+    }
+</style>
+<section id="mu-page-breadcrumb">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-page-breadcrumb-area">
+                    <h2>Nhóm tài liệu: @nhom</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+<div class="container"> 
+    <div class="col-md-8 no-padding-mobile">
+        <h3 class="title">Danh sách tài liệu - văn bản</h3>
+        @foreach (var item in Model)
+        {
+            i++;
+            <div class="col-md-6 no-padding-mobile">
+                <div class="file-item">
+                    <div class="img">
+                        <a href="~/TaiLieu/TaiTaiLieu?id=@item.ID" title="Download"><img src="~/Theme/img/download.png" /></a>
+                    </div>
+                    <div class="info">
+                        <a href="~/TaiLieu/TaiTaiLieu?id=@item.ID" style="font-weight:bold">
+                            @i .@item.TenTaiLieu
+                        </a>
+                        <span>@item.ThongTin</span>
+                        <a href="~/TaiLieu/TaiTaiLieu?id=@item.ID" style="font-size:12px">
+                            File: @System.IO.Path.GetFileName(item.DuongDanFile)
+                        </a>
+                        <p>
+                            <span>@item.NguoiUpload | </span>
+                            <span>@string.Format("{0:dd/MM/yyyy HH:mm}", item.ThoiGianUpload) | </span>
+                            <span>@Html.Raw(item.TrangThaiPheDuyet == true ? "Đã duyệt" : "Chưa duyệt")</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            if (i % 2 == 0)
+            {
+                <div class="clearfix"></div>
+            }
+        }
+    </div> 
+    <div class="col-md-4 no-padding-mobile">
+        <div id="wrapper">
+            <div class="col-md-12 no-padding-mobile">
+                <h3 class="title">Tìm kiếm </h3>
+                <div class="mu-single-sidebar">
+                    <form action="" method="post">
+                        <div class="input-group">
+                            <input name="search" placeholder="Tên tài liệu" value="@ViewBag.search" class="form-control" />
+                            <div class="input-group-btn">
+                                <button class="btn btn-success" type="submit">
+                                    <i class="glyphicon glyphicon-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="wrapper">
+            <div class="col-md-12 no-padding-mobile">
+                <h3 class="title">Chia sẻ tài liệu </h3>
+                <div class="mu-single-sidebar">
+                    <form action="/TaiLieu/Upload" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <input type="file" name="file" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Tên tài liệu</label>
+                            <input class="form-control" name="tenTaiLieu" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="text">Thông tin</label>
+                            <input class="form-control" name="thongTin" />
+                        </div>
+                        <div class="form-group text-center">
+                            <button class="btn btn-success" type="submit">Upload</button>
+                            <button class="btn btn-secondary" type="reset">Xóa</button>
+                        </div>
+                        @if (TempData["errorupload"] != null)
+                        {
+                            <p class="text-danger">@TempData["errorupload"]</p>
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div id="wrapper">
+            <div class="col-md-12 no-padding-mobile">
+                <h3 class="title">Nhóm tài liệu</h3>
+                @foreach (var item in new SV.Models.Map.mapTaiLieu().DanhSachNhom())
+                {
+                    <a href="~/nhom-van-ban?nhom=@item" style="padding: 5px 0px; border-bottom:1px solid #fbfbfb; display:block">
+                        @item
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

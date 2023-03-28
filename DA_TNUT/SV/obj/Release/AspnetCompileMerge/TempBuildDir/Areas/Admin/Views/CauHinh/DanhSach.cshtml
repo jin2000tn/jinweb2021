@@ -1,0 +1,77 @@
+﻿@{
+    ViewBag.Title = "Cấu hình";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+}
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Cấu hình</a>
+        </li>
+        <li>
+            <a href="#">Cấu hình chung</a>
+        </li>
+    </ul>
+</div> 
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                 @Html.Raw(ViewBag.nhom =="HeThong"? "Thiết lập hệ thống" : "")
+                 @Html.Raw(ViewBag.nhom =="GiaoDien"? "Thiết lập giao diện" : "")
+            </small> 
+        </h1>
+    </div> 
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table table-bordered ">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Mã cấu hình
+                                </th>
+                                <th>
+                                    Tên cài đặt
+                                </th>
+                                <th>
+                                    Loại
+                                </th>
+                                <th>
+                                    Giá trị
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in new SV.Models.Map.mapCauHinh().DanhSach(ViewBag.nhom))
+                            { 
+                                <tr>
+                                    <td>
+                                        @item.MaCauHinh
+                                    </td>
+                                    <td>
+                                        @item.Ten
+                                    </td>
+                                    <td>
+                                        @item.Type
+                                    </td>
+                                    <td >
+                                        @item.GiaTri
+                                    </td>
+                                    <td>
+                                        <a href="~/Admin/CauHinh/CapNhat?maCauHinh=@item.MaCauHinh" class="btn btn-xs btn-warning">
+                                            Sửa
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

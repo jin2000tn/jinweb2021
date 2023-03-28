@@ -1,0 +1,98 @@
+﻿@model IEnumerable<SV.Models.TaiLieu>
+
+@{
+    ViewBag.Title = "Danh sách văn bản";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Văn bản</a>
+        </li>
+        <li>
+            <a href="#">Danh sách</a>
+        </li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Danh sách văn bản
+            </small>
+            <a class="btn btn-success btn-xs pull-right" href="~/Admin/TaiLieu/ThemMoi">Thêm mới</a>
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 no-padding" style="margin-bottom:15px">
+            <form method="post">
+                <div class="col-xs-3">
+                    <input name="tenvb" value="@ViewBag.tenvb" class="form-control form-control-sm" placeholder="nhập tên file" />
+                </div>
+                <button class="btn btn-sm btn-info">Xem</button>
+            </form>
+        </div>
+        <div class="col-xs-12">
+            <table class="table  table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center" style="width:50px">
+                            STT
+                        </th>
+                        <th class="detail-col" style="min-width:150px">Tên tài liệu</th>
+                        <th style="min-width:210px"> Thông tin</th>
+                        <th style="min-width:100px">Đường dẫn file</th>
+                        <th style="min-width:100px">Thời gian upload</th>
+                        <th style="min-width:150px">Người Upload</th>
+                        <th style="min-width:50px">Trạng thái phê duyệt</th>
+                        <th style="min-width:190px"> Nhóm</th>
+                        <th>#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                @item.TenTaiLieu
+                            </td>
+                            <td>
+                                @item.ThongTin
+                            </td>
+                            <td> 
+                                @item.DuongDanFile  
+                            </td>
+                            <td>
+                                @string.Format("{0:dd/MM/yyyy}", item.ThoiGianUpload)
+                            </td>
+                            <td>
+                                @item.NguoiUpload
+                            </td>
+                            <td>
+                                @item.TrangThaiPheDuyet
+                            </td>
+                            <td>
+                                @item.NhomTaiLieu
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-info" href="~/Admin/TaiLieu/CapNhat?id=@item.ID">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </a>
+                                <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/TaiLieu/Xoa?id=@item.ID' }">
+                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

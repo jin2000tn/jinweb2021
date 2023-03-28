@@ -1,0 +1,223 @@
+F:\GIANG DAY\SVTNUT\SV\SV\bin\SV.dll.config
+F:\GIANG DAY\SVTNUT\SV\SV\bin\SV.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\SV.pdb
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\csc.exe
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\csc.exe.config
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\csc.rsp
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\csi.exe
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\csi.exe.config
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\csi.rsp
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.Managed.Core.targets
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.AppContext.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Collections.Immutable.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Console.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Diagnostics.StackTrace.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.IO.Compression.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.IO.FileSystem.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.IO.FileSystem.Primitives.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.IO.Pipes.AccessControl.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.IO.Pipes.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Reflection.Metadata.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Security.AccessControl.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Security.Claims.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Security.Cryptography.Encoding.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Security.Cryptography.Primitives.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Security.Principal.Windows.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Text.Encoding.CodePages.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.ValueTuple.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Xml.ReaderWriter.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Xml.XmlDocument.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Xml.XPath.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\System.Xml.XPath.XDocument.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\vbc.exe
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\vbc.exe.config
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\vbc.rsp
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\VBCSCompiler.exe
+F:\GIANG DAY\SVTNUT\SV\SV\bin\roslyn\VBCSCompiler.exe.config
+F:\GIANG DAY\SVTNUT\SV\SV\bin\EntityFramework.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\EntityFramework.SqlServer.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\Microsoft.Web.Infrastructure.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Helpers.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Mvc.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Razor.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Webpages.Deployment.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Webpages.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Webpages.Razor.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\EntityFramework.xml
+F:\GIANG DAY\SVTNUT\SV\SV\bin\EntityFramework.SqlServer.xml
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Razor.xml
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Webpages.xml
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Webpages.Deployment.xml
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Webpages.Razor.xml
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Helpers.xml
+F:\GIANG DAY\SVTNUT\SV\SV\bin\System.Web.Mvc.xml
+F:\GIANG DAY\SVTNUT\SV\SV\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\GIANG DAY\SVTNUT\SV\SV\obj\Debug\SV.csprojAssemblyReference.cache
+F:\GIANG DAY\SVTNUT\SV\SV\obj\Debug\SV.csproj.CoreCompileInputs.cache
+F:\GIANG DAY\SVTNUT\SV\SV\obj\Debug\SV.csproj.CopyComplete
+F:\GIANG DAY\SVTNUT\SV\SV\obj\Debug\SV.dll
+F:\GIANG DAY\SVTNUT\SV\SV\obj\Debug\SV.pdb
+C:\SVTNUT\SV\SV\bin\SV.dll.config
+C:\SVTNUT\SV\SV\bin\SV.dll
+C:\SVTNUT\SV\SV\bin\SV.pdb
+C:\SVTNUT\SV\SV\bin\roslyn\csc.exe
+C:\SVTNUT\SV\SV\bin\roslyn\csc.exe.config
+C:\SVTNUT\SV\SV\bin\roslyn\csc.rsp
+C:\SVTNUT\SV\SV\bin\roslyn\csi.exe
+C:\SVTNUT\SV\SV\bin\roslyn\csi.exe.config
+C:\SVTNUT\SV\SV\bin\roslyn\csi.rsp
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.Managed.Core.targets
+C:\SVTNUT\SV\SV\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\SVTNUT\SV\SV\bin\roslyn\System.AppContext.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Collections.Immutable.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Console.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.IO.Compression.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.IO.FileSystem.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.IO.FileSystem.Primitives.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.IO.Pipes.AccessControl.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.IO.Pipes.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Reflection.Metadata.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Security.AccessControl.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Security.Claims.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Security.Cryptography.Encoding.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Security.Cryptography.Primitives.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Security.Principal.Windows.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Text.Encoding.CodePages.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.ValueTuple.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Xml.ReaderWriter.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Xml.XmlDocument.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Xml.XPath.dll
+C:\SVTNUT\SV\SV\bin\roslyn\System.Xml.XPath.XDocument.dll
+C:\SVTNUT\SV\SV\bin\roslyn\vbc.exe
+C:\SVTNUT\SV\SV\bin\roslyn\vbc.exe.config
+C:\SVTNUT\SV\SV\bin\roslyn\vbc.rsp
+C:\SVTNUT\SV\SV\bin\roslyn\VBCSCompiler.exe
+C:\SVTNUT\SV\SV\bin\roslyn\VBCSCompiler.exe.config
+C:\SVTNUT\SV\SV\bin\EntityFramework.dll
+C:\SVTNUT\SV\SV\bin\EntityFramework.SqlServer.dll
+C:\SVTNUT\SV\SV\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\SVTNUT\SV\SV\bin\Microsoft.Web.Infrastructure.dll
+C:\SVTNUT\SV\SV\bin\System.Web.Helpers.dll
+C:\SVTNUT\SV\SV\bin\System.Web.Mvc.dll
+C:\SVTNUT\SV\SV\bin\System.Web.Razor.dll
+C:\SVTNUT\SV\SV\bin\System.Web.Webpages.Deployment.dll
+C:\SVTNUT\SV\SV\bin\System.Web.Webpages.dll
+C:\SVTNUT\SV\SV\bin\System.Web.Webpages.Razor.dll
+C:\SVTNUT\SV\SV\bin\EntityFramework.xml
+C:\SVTNUT\SV\SV\bin\EntityFramework.SqlServer.xml
+C:\SVTNUT\SV\SV\bin\System.Web.Razor.xml
+C:\SVTNUT\SV\SV\bin\System.Web.Webpages.xml
+C:\SVTNUT\SV\SV\bin\System.Web.Webpages.Deployment.xml
+C:\SVTNUT\SV\SV\bin\System.Web.Webpages.Razor.xml
+C:\SVTNUT\SV\SV\bin\System.Web.Helpers.xml
+C:\SVTNUT\SV\SV\bin\System.Web.Mvc.xml
+C:\SVTNUT\SV\SV\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\SVTNUT\SV\SV\obj\Debug\SV.csproj.AssemblyReference.cache
+C:\SVTNUT\SV\SV\obj\Debug\SV.csproj.CoreCompileInputs.cache
+C:\SVTNUT\SV\SV\obj\Debug\SV.csproj.CopyComplete
+C:\SVTNUT\SV\SV\obj\Debug\SV.dll
+C:\SVTNUT\SV\SV\obj\Debug\SV.pdb
+F:\GIANG DAY\SVTNUT\SV\SV\bin\CKFinder.dll
+F:\GIANG DAY\SVTNUT\SV\SV\bin\CKFinder.pdb
+D:\.NET\sharecode\code\SV\bin\SV.dll.config
+D:\.NET\sharecode\code\SV\bin\SV.dll
+D:\.NET\sharecode\code\SV\bin\SV.pdb
+D:\.NET\sharecode\code\SV\bin\roslyn\csc.exe
+D:\.NET\sharecode\code\SV\bin\roslyn\csc.exe.config
+D:\.NET\sharecode\code\SV\bin\roslyn\csc.rsp
+D:\.NET\sharecode\code\SV\bin\roslyn\csi.exe
+D:\.NET\sharecode\code\SV\bin\roslyn\csi.exe.config
+D:\.NET\sharecode\code\SV\bin\roslyn\csi.rsp
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.Managed.Core.targets
+D:\.NET\sharecode\code\SV\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\.NET\sharecode\code\SV\bin\roslyn\System.AppContext.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Collections.Immutable.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Console.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.IO.Compression.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.IO.FileSystem.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.IO.Pipes.AccessControl.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.IO.Pipes.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Reflection.Metadata.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Security.AccessControl.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Security.Claims.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Security.Principal.Windows.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.ValueTuple.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Xml.XmlDocument.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Xml.XPath.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\.NET\sharecode\code\SV\bin\roslyn\vbc.exe
+D:\.NET\sharecode\code\SV\bin\roslyn\vbc.exe.config
+D:\.NET\sharecode\code\SV\bin\roslyn\vbc.rsp
+D:\.NET\sharecode\code\SV\bin\roslyn\VBCSCompiler.exe
+D:\.NET\sharecode\code\SV\bin\roslyn\VBCSCompiler.exe.config
+D:\.NET\sharecode\code\SV\bin\CKFinder.dll
+D:\.NET\sharecode\code\SV\bin\EntityFramework.dll
+D:\.NET\sharecode\code\SV\bin\EntityFramework.SqlServer.dll
+D:\.NET\sharecode\code\SV\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\.NET\sharecode\code\SV\bin\Microsoft.Web.Infrastructure.dll
+D:\.NET\sharecode\code\SV\bin\System.Web.Helpers.dll
+D:\.NET\sharecode\code\SV\bin\System.Web.Mvc.dll
+D:\.NET\sharecode\code\SV\bin\System.Web.Razor.dll
+D:\.NET\sharecode\code\SV\bin\System.Web.Webpages.Deployment.dll
+D:\.NET\sharecode\code\SV\bin\System.Web.Webpages.dll
+D:\.NET\sharecode\code\SV\bin\System.Web.Webpages.Razor.dll
+D:\.NET\sharecode\code\SV\bin\CKFinder.pdb
+D:\.NET\sharecode\code\SV\bin\EntityFramework.xml
+D:\.NET\sharecode\code\SV\bin\EntityFramework.SqlServer.xml
+D:\.NET\sharecode\code\SV\bin\System.Web.Razor.xml
+D:\.NET\sharecode\code\SV\bin\System.Web.Webpages.xml
+D:\.NET\sharecode\code\SV\bin\System.Web.Webpages.Deployment.xml
+D:\.NET\sharecode\code\SV\bin\System.Web.Webpages.Razor.xml
+D:\.NET\sharecode\code\SV\bin\System.Web.Helpers.xml
+D:\.NET\sharecode\code\SV\bin\System.Web.Mvc.xml
+D:\.NET\sharecode\code\SV\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\.NET\sharecode\code\SV\obj\Debug\SV.csprojAssemblyReference.cache
+D:\.NET\sharecode\code\SV\obj\Debug\SV.csproj.CoreCompileInputs.cache
+D:\.NET\sharecode\code\SV\obj\Debug\SV.csproj.CopyComplete
+D:\.NET\sharecode\code\SV\obj\Debug\SV.dll
+D:\.NET\sharecode\code\SV\obj\Debug\SV.pdb

@@ -1,0 +1,106 @@
+﻿@using SV.Models
+@model SV.Models.BaiVietTuyenSinh
+
+@{
+    ViewBag.Title = Model.TenBaiViet;
+    Layout = "~/Views/shared/layout.cshtml";
+}
+
+<section id="mu-course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="mu-course-container mu-blog-archive">
+                    <article class="mu-blog-single-item">
+                        <figure class="mu-blog-single-img">
+                            <figcaption class="mu-blog-caption">
+                                <h3>
+                                    <a href="#" style="color:#01bafd">
+                                        @Model.TenBaiViet
+                                    </a>
+                                </h3>
+                            </figcaption>
+                        </figure>
+                        <div class="mu-blog-meta">
+                            <a href="#">Thời gian tuyển sinh @string.Format("{0:dd/MM/yyyy}", Model.NgayBatDau) - @string.Format("{0:dd/MM/yyyy}", Model.NgayKetThuc)</a>
+                            <span><i class="fa fa-comments-o"></i></span>
+                        </div>
+                        <div class="mu-blog-description">
+                            @Html.Raw(Model.NoiDung)
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <aside class="mu-sidebar">
+                    <h3>Đăng ký tư vấn</h3>
+                    <form action="~/dang-ky-tu-van-tuyen-sinh" class="contactform" method="post">
+                        <input type="hidden" name="idBaiVietTuyenSinh" value="@Model.ID" />
+                        <p class="comment-form-author">
+                            <label for="HoTen">Họ và tên <span class="required">*</span></label>
+                            <input type="text" required="required" name="HoTen" class="form-control" placeholder="Không để trống">
+                        </p>
+                        <p class="comment-form-url">
+                            <label for="SoDienThoai">Số điện thoại<span class="required">*</span></label>
+                            <input type="tel" required="required" name="SoDienThoai" class="form-control" placeholder="Không để trống">
+                        </p>
+                        <p class="comment-form-comment">
+                            <label for="QueQuan">Quê quán</label>
+                            <input type="text" value="" name="QueQuan" class="form-control">
+                        </p>
+                        <p class="comment-form-email">
+                            <label for="email">Email  </label>
+                            <input type="email" name="email" class="form-control">
+                        </p>
+                        <p class="comment-form-url">
+                            <label for="GhiChu">Ghi chú </label>
+                            <input type="text" name="GhiChu" class="form-control">
+                        </p>
+                        <p class="form-submit" style="text-align:center">
+                            <input type="submit" value="Gửi" class="mu-post-btn btn btn-success">
+                        </p>
+                        @if (TempData["error"] != null)
+                        {
+                            <p class="text-danger">@TempData["error"]</p>
+                        }
+                    </form>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+<section id="mu-from-blog" style="padding-top:0px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="mu-from-blog-area">
+                    <!-- start title -->
+                    <div class="mu-title">
+                        <h2>Thông tin tuyển sinh khác</h2>
+                    </div>
+                    <div class="mu-from-blog-content">
+                        <div class="row">
+                            @foreach (var item in new SV.Models.Map.mapBaiVietTuyenSinh().DanhSachDangTuyen())
+                            {
+                                <div class="col-md-4 col-sm-4">
+                                    <article class="mu-blog-single-item">
+                                        <figure class="mu-blog-single-img">
+                                            <a href="/tuyen-sinh/@item.LinkSeo" style="background:url(@item.HinhAnh); height:250px; width:100%; background-size:cover; background-position:center">
+                                            </a>
+                                            <figcaption class="mu-blog-caption">
+                                                <h4><a href="~/tuyen-sinh/@item.LinkSeo">@item.TenBaiViet</a></h4>
+                                            </figcaption>
+                                        </figure>
+                                        <div class="mu-blog-meta">
+                                            <a href="/tuyen-sinh/@item.LinkSeo">@string.Format("{0:dd/MM/yyyy}", item.NgayBatDau) - @string.Format("{0:dd/MM/yyyy}", item.NgayKetThuc)</a>
+                                        </div>
+                                    </article>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

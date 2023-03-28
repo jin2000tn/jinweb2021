@@ -1,0 +1,65 @@
+﻿@using SV.Models
+@model SV.Models.TinTuc
+@{
+    ViewBag.Title = Model.TieuDe;
+    Layout = "~/Views/shared/layout.cshtml";
+}
+<section id="mu-course-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="mu-course-container mu-blog-archive">
+                    <article class="mu-blog-single-item">
+                        <figure class="mu-blog-single-img">
+                            <figcaption class="mu-blog-caption">
+                                <h3><a href="#">@Model.TieuDe</a></h3>
+                            </figcaption>
+                        </figure>
+                        <div class="mu-blog-meta">
+                            <a href="#">
+                                Tác Giả: @Model.TacGia
+                            </a>
+                            <a href="#">@string.Format("{0:dd-MM-yyyy}", Model.ThoiGian)</a>
+                            <span><i class="fa fa-comments-o"></i>@Model.LuotXem</span>
+                        </div>
+                        <div class="mu-blog-description">
+                            @Html.Raw(Model.NoiDung)
+                        </div>
+                    </article>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <!-- start sidebar -->
+                <aside class="mu-sidebar">
+                    <p>
+                        <img class="img-responsive" src="@Model.HinhAnh" alt="@Model.TieuDe">
+                    </p>
+                    <h3>Tin liên quan</h3>
+                    @foreach (var item in new SV.Models.Map.mapTinTuc().Top5())
+                    {
+                        <div class="event-item">
+                            <div class="date">
+                                <span class="dayweek">@item.LuotXem</span>
+                                <span class="day">@item.TacGia</span>
+                                <span class="number" style="font-size: 10px;">@string.Format("{0:dd-MM-yyyy}", item.ThoiGian)</span>
+                            </div>
+                            <div class="info">
+                                <a href="~/tin-tuc/@item.LinkSeo" style="font-size: 14px;-webkit-line-clamp: 3;">@item.TieuDe</a>
+                            </div>
+                        </div>
+                    }
+                    <div class="mu-single-sidebar">
+                        <h3>Tin tức trong tháng</h3>
+                        <ul class="mu-sidebar-catg mu-sidebar-archives">
+                            @for (int thang = 1; thang <= 12; thang++)
+                            {
+                                var soTin = new SV.Models.Map.mapTinTuc().SoTinTrongThang(DateTime.Now.Year, thang);
+                                <li><a href="~/tin-tuc-trong-thang?nam=@DateTime.Now.Year&thang=@thang">Tháng @thang <span>(@soTin)</span></a></li>
+                            }
+                        </ul>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>

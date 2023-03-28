@@ -1,0 +1,216 @@
+﻿@{
+    var cauHinh = new SV.Models.Map.mapCauHinh();
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.title</title>
+    <link rel="shortcut icon" href="~/Theme/img/favicon.ico" type="image/x-icon">
+    <!-- Fonts -->
+    <link href="~/Theme/css/font-awesome.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,300,300italic,500,700' rel='stylesheet' type='text/css'>
+    <!-- Bootstrap -->
+    <link href="~/Theme/css/bootstrap.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Theme/css/slick.css">
+    <link rel="stylesheet" href="~/Theme/css/jquery.fancybox.css" type="text/css" media="screen" />
+    <!-- Theme color -->
+    <link id="switcher" href="~/Theme/css/theme-color/default-theme.css" rel="stylesheet">
+    <!-- Main style sheet -->
+    <link href="~/Theme/css/style.css" rel="stylesheet">
+    <link href="~/Theme/css/custom.css" rel="stylesheet">
+
+</head>
+<body> 
+   @RenderSection("afterbody", false)
+
+    <header id="mu-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12">
+                    <div class="mu-header-area">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="mu-header-top-left">
+                                    <div class="mu-top-email">
+                                        <i class="fa fa-envelope"></i>
+                                        <span>@cauHinh.GiaTri("Email")</span>
+                                    </div>
+                                    <div class="mu-top-phone">
+                                        <i class="fa fa-phone"></i>
+                                        <span><a href="tel:@cauHinh.GiaTri("Hotline")">@cauHinh.GiaTri("Hotline")</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <div class="mu-header-top-right">
+                                    <nav>
+                                        <ul class="mu-top-social-nav">
+                                            <li><a href="@cauHinh.GiaTri("TrangFacebook")"><span class="fa fa-facebook"></span></a></li>
+                                            <li><a href="@cauHinh.GiaTri("TrangYoutube")"><span class="fa fa-youtube"></span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- End header  -->
+    <!-- Start menu -->
+    <section id="mu-menu">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button> 
+                    <a class="navbar-brand" href="~/"><i class="fa fa-university"></i><span>@cauHinh.GiaTri("LogoText")</span></a> 
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        @{
+                            var tk = SV.App_Start.SessionConfig.GetTaiKhoan();
+                            if (tk == null)
+                            {
+                                <li><a href="~/dang-nhap"><span class="glyphicon glyphicon-user"></span>Đăng nhập</a></li>
+                            }
+                            else
+                            {
+                                <li class="dropdown">
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        @tk.HoVaTen
+                                        <span class="caret"></span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li>
+                                            <a href="~/thong-tin-tai-khoan">
+                                                <i class="ace-icon fa fa-user"></i>
+                                                Thông tin tài khoản
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="~/taikhoan/dangxuat">
+                                                <i class="ace-icon fa fa-power-off"></i>
+                                                Đăng xuất
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        }
+                    </ul>
+                    <ul id="top-menu" class="nav navbar-nav navbar-right main-nav">
+                        <li class="active"><a href="~/">Home</a></li>
+                        <li class=""><a href="~/tuyen-sinh">Tuyển sinh</a></li>
+                        <li class=""><a href="~/tin-tuc">Tin tức</a></li>
+                        <li class=""><a href="~/yeu-cau">Yêu cầu</a></li>
+                        <li class=""><a href="~/van-ban">Văn bản</a></li>
+                        <li class=""><a href="~/thao-luan">Thảo luận</a></li>
+                        <li><a href="#" id="mu-search-icon"><i class="fa fa-search"></i></a></li>
+                    </ul> 
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+    </section>
+    <!-- End menu -->
+    <!-- Start search box -->
+    <div id="mu-search">
+        <div class="mu-search-area">
+            <button class="mu-search-close"><span class="fa fa-close"></span></button>
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="mu-search-form">
+                        <input type="search" placeholder="Type Your Keyword(s) & Hit Enter">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End search box -->
+    @RenderBody()
+
+    <footer id="mu-footer">
+        <!-- start footer top -->
+        <div class="mu-footer-top">
+            <div class="container">
+                <div class="mu-footer-top-area">
+                    <div class="row">
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="mu-footer-widget">
+                                <h4>@cauHinh.GiaTri("TenTruong")</h4>
+                                <address>
+                                    <p>@cauHinh.GiaTri("DiaChi")</p>
+                                    <p>Phone: @cauHinh.GiaTri("SoDienThoai") </p>
+                                    <p>Website: @cauHinh.GiaTri("Website")</p>
+                                    <p>Email: @cauHinh.GiaTri("EmailFooter")</p>
+                                </address>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-6">
+                            <div class="mu-footer-widget">
+                                <h4>Thông tin bổ sung</h4>
+                                <ul>
+                                    <li><a href="~/thong-tin/gioi-thieu">Giới thiệu</a></li>
+                                    <li><a href="~/thong-tin/quy-dinh-chung">Quy định chung</a></li>
+                                    <li><a href="~/thong-tin/chinh-sach-bao-mat">Chính sách bảo mật</a></li>
+                                    <li><a href="~/thong-tin/ho-tro-ky-thuat">Event</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-6">
+                            <div class="mu-footer-widget">
+                                <h4>Liên kết</h4>
+                                <ul>
+                                    @foreach (var item in new SV.Models.Map.mapCauHinh().DanhSach("LienKet"))
+                                    {
+                                        <li><a href="@item.GiaTri">@item.Ten</a></li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-xs-12">
+                            <div class="mu-footer-widget">
+                                <h4>Đăng ký nhận thông tin</h4>
+                                <p>Thông tin mới sẽ được gửi tới email của bạn</p>
+                                <form class="mu-subscribe-form">
+                                    <input type="email" placeholder="Nhập địa chỉ email">
+                                    <button class="mu-subscribe-btn" type="submit">Đồng ý!</button>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="mu-footer-bottom">
+            <div class="container">
+                <div class="mu-footer-bottom-area">
+                    <p>@Html.Raw(cauHinh.GiaTri("NhaPhatTrien"))</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End footer -->
+    <!-- jQuery library -->
+    <script src="~/Theme/js/jquery.min.js"></script>
+    <script src="~/Theme/js/bootstrap.js"></script>
+    <script type="text/javascript" src="~/Theme/js/slick.js"></script>
+    <script type="text/javascript" src="~/Theme/js/waypoints.js"></script>
+    <script type="text/javascript" src="~/Theme/js/jquery.counterup.js"></script>
+    <script type="text/javascript" src="~/Theme/js/jquery.mixitup.js"></script>
+    <script type="text/javascript" src="~/Theme/js/jquery.fancybox.pack.js"></script>
+    <script src="~/Theme/js/custom.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

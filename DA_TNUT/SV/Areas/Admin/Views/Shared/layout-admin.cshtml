@@ -1,0 +1,330 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>@ViewBag.title</title>
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="~/Areas/Admin/assets/css/ace-rtl.min.css" />
+    <script src="~/Areas/Admin/assets/js/ace-extra.min.js"></script>
+    <script src="~/Areas/Admin/assets/plugin/ckfinder/ckfinder.js"></script>
+    <script src="~/Areas/Admin/assets/plugin/ckeditor/ckeditor.js"></script>
+</head>
+
+<body class="no-skin">
+    <div id="navbar" class="navbar navbar-default ace-save-state">
+        <div class="navbar-container ace-save-state" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                <span class="sr-only">Toggle sidebar</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-header pull-left">
+                <a href="index.html" class="navbar-brand">
+                    <small>
+                        <i class="fa fa-leaf"></i>
+                        Admin SV-TNUT
+                    </small>
+                </a>
+            </div>
+            @* Menu top *@
+            <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    @{
+                        var tk = SV.App_Start.SessionConfig.GetTaiKhoanNV();
+                        if (tk == null)
+                        {
+                            <li><a href="~/Admin/TaiKhoanNV/DangNhap"><span class="glyphicon glyphicon-user"></span>Đăng nhập</a></li>
+                        }
+                        else
+                        {
+                            <li class="light-blue dropdown-modal">
+                                <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                                    <img class="nav-user-photo" src="~/Areas/Admin/assets/images/avatars/user.jpg" alt="Jason's Photo" />
+                                    @tk.HoVaTen
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                    <li>
+                                        <a href="~/Admin/TaiKhoanNV/ThongTin">
+                                            <i class="ace-icon fa fa-user"></i>
+                                            Thông tin tài khoản
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Admin/TaiKhoanNV/DoiMatKhau">
+                                            <i class="ace-icon fa fa-cog"></i>
+                                            Đổi mật khẩu
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="~/Admin/TaiKhoanNV/DangXuat">
+                                            <i class="ace-icon fa fa-power-off"></i>
+                                            Đăng xuất
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container ace-save-state" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.loadState('main-container') } catch (e) { }
+        </script>
+        <div id="sidebar" class="sidebar responsive ace-save-state">
+            <script type="text/javascript">
+                try { ace.settings.loadState('sidebar') } catch (e) { }
+            </script>
+            <ul class="nav nav-list">
+                @* Trang chủ *@
+                <li class="active">
+                    <a href="~/Admin">
+                        <i class="menu-icon fa fa-tachometer"></i>
+                        <span class="menu-text"> Trang chủ </span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                @*Tin tức*@
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-newspaper-o"></i>
+                        <span class="menu-text">
+                            Tin tức &amp; Sự kiện
+                        </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="~/Admin/TinTuc/DanhSach">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Tin tức
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="~/Admin/TinTuc/DanhSach?sukien=true">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Sự kiện
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                @* Slide *@
+                <li>
+                    <a href="~/Admin/Slide/DanhSach">
+                        <i class="menu-icon fa fa-image"></i>
+                        <span class="menu-text"> Slide</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+                @*Tuyển sinh*@
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-book"></i>
+                        <span class="menu-text">
+                            Đào tạo
+                        </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="~/Admin/BaiVietTuyenSinh/DanhSach">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Tuyển sinh
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="~/Admin/LienHeTuyenSinh/DanhSach">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Kết quả tuyển sinh
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="~/Admin/ChuongTrinhDaoTao/DanhSach">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Chương trình đào tạo
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                @* Trang giới thiệu *@
+                <li>
+                    <a href="~/Admin/TrangGioiThieu/DanhSach">
+                        <i class="menu-icon fa fa-file-text-o"></i>
+                        <span class="menu-text"> Trang giới thiệu</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                @*Văn bản*@
+                <li>
+                    <a href="~/Admin/TaiLieu/DanhSach">
+                        <i class="menu-icon fa fa-folder-open"></i>
+                        <span class="menu-text"> Tài liệu & văn bản</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                @* Bài đăng của sinh viên *@
+                <li>
+                    <a href="~/Admin/BaiDang/DanhSach">
+                        <i class="menu-icon fa fa-comments"></i>
+                        <span class="menu-text"> Bài đăng của sinh viên</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                @* Quản lý yêu cầu *@
+                <li>
+                    <a href="~/Admin/QuanLyYeuCau/DanhSach">
+                        <i class="menu-icon fa fa-question"></i>
+                        <span class="menu-text"> Quản lý yêu cầu</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                @* Tài khoản sinh viên *@
+                <li>
+                    <a href="~/Admin/TaiKhoanSinhVien/DanhSach">
+                        <i class="menu-icon fa fa-user"></i>
+                        <span class="menu-text"> Tài khoản sinh viên</span>
+                    </a>
+                    <b class="arrow"></b>
+                </li>
+
+                @* Thiết lập giao diện *@
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-desktop"></i>
+                        <span class="menu-text">
+                            Thiết lập giao diện
+                        </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="~/Admin/CauHinh/DanhSach?nhom=GiaoDienDauTrang">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Đầu trang
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="~/Admin/CauHinh/DanhSach?nhom=GiaoDienChanTrang">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Chân trang
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="~/Admin/CauHinh/DanhSach?nhom=LienKet">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Liên kết
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+                @* Thiết lập hệ thống *@
+                <li class="">
+                    <a href="#" class="dropdown-toggle">
+                        <i class="menu-icon fa fa-cog"></i>
+                        <span class="menu-text">
+                            Cài đặt chung
+                        </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+                    <ul class="submenu">
+                        <li class="">
+                            <a href="~/Admin/CauHinh/DanhSach?nhom=HeThong">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Thiết lập hệ thống
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                        <li class="">
+                            <a href="~/Admin/TaiKhoanNV/DanhSach">
+                                <i class="menu-icon fa fa-caret-right"></i>
+                                Tài khoản nhân viên
+                            </a>
+                            <b class="arrow"></b>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+                <i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="main-content-inner">
+                @RenderBody()
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <span class="bigger-120">
+                        <span class="blue bolder">TNUT 2021</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
+        </a>
+    </div><!-- /.main-container -->
+    <!-- basic scripts -->
+    <!--[if !IE]> -->
+    <script src="~/Areas/Admin/assets/js/jquery-2.1.4.min.js"></script>
+
+    <!-- <![endif]-->
+    <!--[if IE]>
+    <script src="~/Areas/Admin/assets/js/jquery-1.11.3.min.js"></script>
+    <![endif]-->
+    <script type="text/javascript">
+        if ('ontouchstart' in document.documentElement) document.write("<script src='~/Areas/Admin/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="~/Areas/Admin/assets/js/bootstrap.min.js"></script>
+
+    <!-- page specific plugin scripts -->
+    <!--[if lte IE 8]>
+      <script src="~/Areas/Admin/assets/js/excanvas.min.js"></script>
+    <![endif]-->
+    <script src="~/Areas/Admin/assets/js/jquery-ui.custom.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/jquery.easypiechart.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/jquery.sparkline.index.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/jquery.flot.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/jquery.flot.pie.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/jquery.flot.resize.min.js"></script>
+
+    <!-- ace scripts -->
+    <script src="~/Areas/Admin/assets/js/ace-elements.min.js"></script>
+    <script src="~/Areas/Admin/assets/js/ace.min.js"></script>
+    @RenderSection("scripts", false)
+</body>
+</html>

@@ -1,0 +1,380 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SV_TNUTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ChuyenMucs" EntityType="SV_TNUTModel.ChuyenMuc" />
+    <EntitySet Name="BaiDangs" EntityType="SV_TNUTModel.BaiDang" />
+    <EntitySet Name="BaiVietTuyenSinhs" EntityType="SV_TNUTModel.BaiVietTuyenSinh" />
+    <EntitySet Name="CauHinhs" EntityType="SV_TNUTModel.CauHinh" />
+    <EntitySet Name="ChucNangs" EntityType="SV_TNUTModel.ChucNang" />
+    <EntitySet Name="ChuongTrinhDaoTaos" EntityType="SV_TNUTModel.ChuongTrinhDaoTao" />
+    <EntitySet Name="Comments" EntityType="SV_TNUTModel.Comment" />
+    <EntitySet Name="LienHeTuyenSinhs" EntityType="SV_TNUTModel.LienHeTuyenSinh" />
+    <EntitySet Name="PhanQuyens" EntityType="SV_TNUTModel.PhanQuyen" />
+    <EntitySet Name="SinhViens" EntityType="SV_TNUTModel.SinhVien" />
+    <EntitySet Name="Slides" EntityType="SV_TNUTModel.Slide" />
+    <EntitySet Name="Slide_HinhAnh" EntityType="SV_TNUTModel.Slide_HinhAnh" />
+    <EntitySet Name="Slide_TinTuc" EntityType="SV_TNUTModel.Slide_TinTuc" />
+    <EntitySet Name="sysdiagrams" EntityType="SV_TNUTModel.sysdiagram" />
+    <EntitySet Name="Table_Test" EntityType="SV_TNUTModel.Table_Test" />
+    <EntitySet Name="TaiKhoanNVs" EntityType="SV_TNUTModel.TaiKhoanNV" />
+    <EntitySet Name="TaiLieux" EntityType="SV_TNUTModel.TaiLieu" />
+    <EntitySet Name="TinTucs" EntityType="SV_TNUTModel.TinTuc" />
+    <EntitySet Name="TrangGioiThieux" EntityType="SV_TNUTModel.TrangGioiThieu" />
+    <EntitySet Name="YeuCaus" EntityType="SV_TNUTModel.YeuCau" />
+    <AssociationSet Name="FK_BaiDang_SinhVien1" Association="SV_TNUTModel.FK_BaiDang_SinhVien1">
+      <End Role="SinhVien" EntitySet="SinhViens" />
+      <End Role="BaiDang" EntitySet="BaiDangs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comment_BaiDang" Association="SV_TNUTModel.FK_Comment_BaiDang">
+      <End Role="BaiDang" EntitySet="BaiDangs" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LienHeTuyenSinh_BaiVietTuyenSinh" Association="SV_TNUTModel.FK_LienHeTuyenSinh_BaiVietTuyenSinh">
+      <End Role="BaiVietTuyenSinh" EntitySet="BaiVietTuyenSinhs" />
+      <End Role="LienHeTuyenSinh" EntitySet="LienHeTuyenSinhs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhanQuyen_ChucNang1" Association="SV_TNUTModel.FK_PhanQuyen_ChucNang1">
+      <End Role="ChucNang" EntitySet="ChucNangs" />
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhanQuyen_TaiKhoanNV" Association="SV_TNUTModel.FK_PhanQuyen_TaiKhoanNV">
+      <End Role="TaiKhoanNV" EntitySet="TaiKhoanNVs" />
+      <End Role="PhanQuyen" EntitySet="PhanQuyens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_YeuCau_SinhVien" Association="SV_TNUTModel.FK_YeuCau_SinhVien">
+      <End Role="SinhVien" EntitySet="SinhViens" />
+      <End Role="YeuCau" EntitySet="YeuCaus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Slide_HinhAnh_Slide" Association="SV_TNUTModel.FK_Slide_HinhAnh_Slide">
+      <End Role="Slide" EntitySet="Slides" />
+      <End Role="Slide_HinhAnh" EntitySet="Slide_HinhAnh" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ChuyenMuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenChuyenMuc" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LinkSeo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoLuotXem" Type="Int32" />
+  </EntityType>
+  <EntityType Name="BaiDang">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSinhVien" Type="Int32" />
+    <Property Name="NoiDung" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SinhVien" Relationship="SV_TNUTModel.FK_BaiDang_SinhVien1" FromRole="BaiDang" ToRole="SinhVien" />
+    <NavigationProperty Name="Comments" Relationship="SV_TNUTModel.FK_Comment_BaiDang" FromRole="BaiDang" ToRole="Comment" />
+    <Property Name="LuotXem" Type="Int32" />
+  </EntityType>
+  <EntityType Name="BaiVietTuyenSinh">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenBaiViet" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LinkSeo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgayBatDau" Type="DateTime" Precision="0" />
+    <Property Name="NgayKetThuc" Type="DateTime" Precision="0" />
+    <Property Name="HinhAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="LienHeTuyenSinhs" Relationship="SV_TNUTModel.FK_LienHeTuyenSinh_BaiVietTuyenSinh" FromRole="BaiVietTuyenSinh" ToRole="LienHeTuyenSinh" />
+  </EntityType>
+  <EntityType Name="CauHinh">
+    <Key>
+      <PropertyRef Name="MaCauHinh" />
+    </Key>
+    <Property Name="MaCauHinh" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Ten" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GiaTri" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Type" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NhomThietLap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ChucNang">
+    <Key>
+      <PropertyRef Name="MaChucNang" />
+    </Key>
+    <Property Name="MaChucNang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Nhom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PhanQuyens" Relationship="SV_TNUTModel.FK_PhanQuyen_ChucNang1" FromRole="ChucNang" ToRole="PhanQuyen" />
+  </EntityType>
+  <EntityType Name="ChuongTrinhDaoTao">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Icon" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TenChuongTrinh" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idTaiKhoan" Type="Int32" />
+    <Property Name="idBaiDang" Type="Int32" />
+    <Property Name="NoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BaiDang" Relationship="SV_TNUTModel.FK_Comment_BaiDang" FromRole="Comment" ToRole="BaiDang" />
+  </EntityType>
+  <EntityType Name="LienHeTuyenSinh">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idBaiVietTuyenSinh" Type="Int32" Nullable="false" />
+    <Property Name="HoTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianNhan" Type="DateTime" Precision="3" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DaTraLoi" Type="Boolean" />
+    <Property Name="QueQuan" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="BaiVietTuyenSinh" Relationship="SV_TNUTModel.FK_LienHeTuyenSinh_BaiVietTuyenSinh" FromRole="LienHeTuyenSinh" ToRole="BaiVietTuyenSinh" />
+  </EntityType>
+  <EntityType Name="PhanQuyen">
+    <Key>
+      <PropertyRef Name="idTaiKhoan" />
+      <PropertyRef Name="maChucNang" />
+    </Key>
+    <Property Name="idTaiKhoan" Type="Int32" Nullable="false" />
+    <Property Name="maChucNang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="GhiChu" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChucNang" Relationship="SV_TNUTModel.FK_PhanQuyen_ChucNang1" FromRole="PhanQuyen" ToRole="ChucNang" />
+    <NavigationProperty Name="TaiKhoanNV" Relationship="SV_TNUTModel.FK_PhanQuyen_TaiKhoanNV" FromRole="PhanQuyen" ToRole="TaiKhoanNV" />
+  </EntityType>
+  <EntityType Name="SinhVien">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="HoVaTen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Truong" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="AnhDaiDien" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="SoDienThoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Lop" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="isKhoa" Type="Boolean" />
+    <NavigationProperty Name="BaiDangs" Relationship="SV_TNUTModel.FK_BaiDang_SinhVien1" FromRole="SinhVien" ToRole="BaiDang" />
+    <NavigationProperty Name="YeuCaus" Relationship="SV_TNUTModel.FK_YeuCau_SinhVien" FromRole="SinhVien" ToRole="YeuCau" />
+  </EntityType>
+  <EntityType Name="Slide">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenSlide" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="isActive" Type="Boolean" />
+    <Property Name="TuNgay" Type="DateTime" Precision="0" />
+    <Property Name="DenNgay" Type="DateTime" Precision="0" />
+    <Property Name="LoaiSlide" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Slide_HinhAnh" Relationship="SV_TNUTModel.FK_Slide_HinhAnh_Slide" FromRole="Slide" ToRole="Slide_HinhAnh" />
+  </EntityType>
+  <EntityType Name="Slide_HinhAnh">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSlide" Type="Int32" Nullable="false" />
+    <Property Name="TenHinhAnh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ThuTu" Type="Int32" />
+    <Property Name="LienKet" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Slide" Relationship="SV_TNUTModel.FK_Slide_HinhAnh_Slide" FromRole="Slide_HinhAnh" ToRole="Slide" />
+  </EntityType>
+  <EntityType Name="Slide_TinTuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="LienKet" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Table_Test">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Ten" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TaiKhoanNV">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="HoVaTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="isKhoa" Type="Boolean" />
+    <NavigationProperty Name="PhanQuyens" Relationship="SV_TNUTModel.FK_PhanQuyen_TaiKhoanNV" FromRole="TaiKhoanNV" ToRole="PhanQuyen" />
+  </EntityType>
+  <EntityType Name="TaiLieu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTaiLieu" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ThongTin" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DuongDanFile" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGianUpload" Type="DateTime" Precision="3" />
+    <Property Name="NguoiUpload" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TrangThaiPheDuyet" Type="Boolean" />
+    <Property Name="NhomTaiLieu" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TinTuc">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TieuDe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HinhAnh" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="TacGia" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LinkSeo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LuotXem" Type="Int32" />
+    <Property Name="TomTat" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="isSuKien" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="TrangGioiThieu">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TenTrang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LinkSeo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="YeuCau">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idSinhVien" Type="Int32" />
+    <Property Name="NoiDung" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="TraLoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DaTraLoi" Type="Boolean" />
+    <Property Name="ThoiGian" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="SinhVien" Relationship="SV_TNUTModel.FK_YeuCau_SinhVien" FromRole="YeuCau" ToRole="SinhVien" />
+  </EntityType>
+  <Association Name="FK_BaiDang_SinhVien1">
+    <End Type="SV_TNUTModel.SinhVien" Role="SinhVien" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SV_TNUTModel.BaiDang" Role="BaiDang" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="BaiDang">
+        <PropertyRef Name="idSinhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comment_BaiDang">
+    <End Type="SV_TNUTModel.BaiDang" Role="BaiDang" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SV_TNUTModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiDang">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="idBaiDang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LienHeTuyenSinh_BaiVietTuyenSinh">
+    <End Type="SV_TNUTModel.BaiVietTuyenSinh" Role="BaiVietTuyenSinh" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SV_TNUTModel.LienHeTuyenSinh" Role="LienHeTuyenSinh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BaiVietTuyenSinh">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="LienHeTuyenSinh">
+        <PropertyRef Name="idBaiVietTuyenSinh" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhanQuyen_ChucNang1">
+    <End Type="SV_TNUTModel.ChucNang" Role="ChucNang" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SV_TNUTModel.PhanQuyen" Role="PhanQuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucNang">
+        <PropertyRef Name="MaChucNang" />
+      </Principal>
+      <Dependent Role="PhanQuyen">
+        <PropertyRef Name="maChucNang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhanQuyen_TaiKhoanNV">
+    <End Type="SV_TNUTModel.TaiKhoanNV" Role="TaiKhoanNV" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SV_TNUTModel.PhanQuyen" Role="PhanQuyen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoanNV">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PhanQuyen">
+        <PropertyRef Name="idTaiKhoan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_YeuCau_SinhVien">
+    <End Type="SV_TNUTModel.SinhVien" Role="SinhVien" Multiplicity="0..1" />
+    <End Type="SV_TNUTModel.YeuCau" Role="YeuCau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SinhVien">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="YeuCau">
+        <PropertyRef Name="idSinhVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Slide_HinhAnh_Slide">
+    <End Type="SV_TNUTModel.Slide" Role="Slide" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SV_TNUTModel.Slide_HinhAnh" Role="Slide_HinhAnh" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Slide">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Slide_HinhAnh">
+        <PropertyRef Name="idSlide" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

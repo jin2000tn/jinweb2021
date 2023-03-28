@@ -1,0 +1,74 @@
+﻿@model IEnumerable<SV.Models.TrangGioiThieu>
+
+@{
+    ViewBag.Title = "Danh sách trang giới thiệu";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Trang bài viết</a>
+        </li> 
+        <li>
+            <a href="#">Danh sách</a>
+        </li> 
+    </ul>  
+</div>
+<div class="page-content"> 
+    <div class="page-header">
+        <h1> 
+            <small>
+                Danh sách trang giới thiệu
+            </small>
+            <a class="btn btn-success btn-xs pull-right" href="~/Admin/TrangGioiThieu/ThemMoi">Thêm mới</a>
+        </h1>
+    </div> 
+
+    <div class="row">
+        <div class="col-xs-12"> 
+            <div class="row">
+                <div class="col-xs-12">
+                    <table   class="table  table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="center" style="width:50px">
+                                    STT
+                                </th>
+                                <th class="detail-col" style="min-width:400px">Tên trang</th>
+                                <th style="min-width:400px">Link seo</th> 
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                i++;
+                                <tr>
+                                    <td >@i</td>
+                                    <td>
+                                        @item.TenTrang
+                                    </td> 
+                                    <td>
+                                        @item.LinkSeo
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-xs btn-info"href="~/Admin/TrangGioiThieu/CapNhat?id=@item.ID" >
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </a> 
+                                        <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/TrangGioiThieu/Xoa?id=@item.ID' }">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody> 
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+ 

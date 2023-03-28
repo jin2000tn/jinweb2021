@@ -1,0 +1,65 @@
+﻿@model SV.Models.BaiDang
+@{
+    ViewBag.Title = "Thông tin bài đăng";
+    Layout = "~/Views/shared/layout.cshtml";
+    var domain = new SV.Models.Map.mapCauHinh().GiaTri("domain");
+}
+@section afterbody{
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v11.0&appId=807107033417070&autoLogAppEvents=1" nonce="hvQPS0NN"></script>
+} 
+<section id="mu-course-content">
+    <div class="container">
+        <div class="col-md-8 mu-course-container mu-blog-single">
+            <article class="mu-blog-single-item">
+                <div class="mu-blog-meta">
+                    <b><a href="#">@Model.SinhVien.HoVaTen</a></b>
+                    <a href="#">02 June 2016</a>
+                    <span><i class="fa fa-comments-o"></i>87</span>
+                </div>
+                <div class="mu-blog-description">
+                    <p>@Model.NoiDung</p>
+                </div>
+                @if (System.IO.File.Exists(Server.MapPath(Model.HinhAnh ?? "")) == true)
+                {
+                    <figure class="mu-blog-single-img">
+                        <a href="#"><img alt="img" src="@Model.HinhAnh" style="width:unset; max-width:100%; max-height:300px;"></a>
+                    </figure>
+                }
+                <div class="mu-blog-social">
+                    <ul class="mu-news-social-nav">
+                        <li>SOCIAL SHARE :</li>
+                        <li style="padding-top:10px"><div class="fb-like" data-href="@domain/thong-tin-thao-luan?post=@Model.ID" data-width="" data-layout="standard" data-action="like" data-size="small" data-share="true"></div></li>
+                    </ul>
+                </div>
+                <div class="col-md-12">
+                    <div class="fb-comments" data-href="@domain/thong-tin-thao-luan?post=@Model.ID" data-width="100%" data-numposts="10"></div>
+                </div>
+            </article>
+        </div>
+
+        <div class="col-md-4">
+            <!-- start sidebar -->
+            <aside class="mu-sidebar">
+                <!-- start single sidebar -->
+                <div class="mu-single-sidebar" style="margin-top:50px">
+                    <a href="~/bai-dang-cua-toi" class="btn btn-info  ">Bài đăng của tôi</a>
+                </div>
+                <!-- end single sidebar -->
+                <!-- start single sidebar -->
+                <div class="mu-single-sidebar">
+                    <h3 class="title">Bài đăng trong tháng</h3>
+                    <ul class="mu-sidebar-catg mu-sidebar-archives">
+                        @for (int i = 1; i <= 12; i++)
+                        {
+                            var soLuong = new SV.Models.Map.mapBaiDang().SoLuongTrongThang(i, DateTime.Now.Year);
+                            <li><a href="~/bai-dang-trong-thang?thang=@i">Tháng @i <span class="pull-right">(@soLuong)</span></a></li>
+                        }
+                    </ul>
+                </div>
+                <!-- end single sidebar -->
+            </aside>
+            <!-- / end sidebar -->
+        </div>
+    </div>
+</section>

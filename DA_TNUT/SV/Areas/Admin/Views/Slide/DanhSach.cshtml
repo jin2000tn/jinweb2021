@@ -1,0 +1,94 @@
+﻿@model IEnumerable<SV.Models.Slide>
+
+@{
+    ViewBag.Title = "Danh Sách";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Slide</a>
+        </li>
+        <li>
+            <a href="#">Danh sách Slide</a>
+        </li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Danh sách Slide
+                <a class="btn btn-success btn-xs pull-right" href="~/Admin/Slide/ThemMoi">Thêm mới</a>
+            </small>
+
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table  table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="center" style="width:50px">
+                                    STT
+                                </th>
+                                <th>Tên Slide</th>
+                                <th>Loại Slide</th>
+                                <th>Mô tả</th>
+                                <th>Hoạt động</th>
+                                <th>Thời gian bắt đầu</th>
+                                <th>Thời gian kết thúc</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                i++;
+                                <tr>
+                                    <td>@i</td>
+
+                                    <td>
+                                        <a href="~/Admin/Slide/ChiTiet?id=@item.ID">
+                                            @item.TenSlide
+                                        </a>
+                                    </td>
+                                    <td>@item.LoaiSlide</td>
+                                    <td>
+                                        @item.MoTa
+                                    </td>
+                                    <td>
+                                        @Html.Raw(item.isActive == true ? "Có" : "Không")
+                                    </td>
+                                    <td>
+                                        @string.Format("{0:dd/MM/yyyy}", item.TuNgay)
+                                    </td>
+                                    <td>
+                                        @string.Format("{0:dd/MM/yyyy}", item.DenNgay)
+                                    </td>
+
+
+                                    <td>
+                                        <a class="btn btn-xs btn-info" href="~/Admin/Slide/CapNhat?id=@item.ID">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </a>
+                                        <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/Slide/Xoa?id=@item.ID' }">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

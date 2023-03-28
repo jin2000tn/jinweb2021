@@ -1,0 +1,127 @@
+﻿@model IEnumerable<SV.Models.LienHeTuyenSinh>
+
+@{
+    ViewBag.Title = "Kết quả Tuyển Sinh";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+    int? idBaiViet = ViewBag.idBaiViet;
+    bool? trangThai = ViewBag.trangThai;
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Tuyển sinh</a>
+        </li>
+        <li>
+            <a href="#">Kết quả </a>
+        </li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Liên hệ tuyển sinh
+                <a class="btn btn-success btn-xs pull-right" href="~/Admin/LienHeTuyenSinh/ThemMoi">Thêm mới</a>
+            </small>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12 no-padding" style="margin-bottom:15px">
+                    <form>
+                        <div class="col-xs-2">
+                            <select name="idBaiViet" class="form-control form-group-sm">
+                                <option value="">Tất cả bài viết</option>
+                                @foreach (var item in new SV.Models.Map.mapBaiVietTuyenSinh().DanhSach())
+                                {
+                                    <option value="@item.ID" @Html.Raw(item.ID == idBaiViet ? "selected" : "")>@item.TenBaiViet</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-xs-2">
+                            <select name="trangThai" class="form-control form-group-sm"> 
+                                <option value="false" @Html.Raw(trangThai == false ? "selected" : "")>Chưa trả lời</option>
+                                <option value="true" @Html.Raw(trangThai == true ? "selected" : "")>Đã trả lời</option> 
+                            </select>
+                        </div>
+                        <button class="btn btn-sm btn-info">Xem</button>
+                    </form>
+                </div>
+                <div class="col-xs-12">
+                    <table class="table  table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="center" style="width:50px">
+                                    STT
+                                </th>
+                                <th>Họ tên</th>
+                                <th>Email</th>
+                                <th>Số điện thoại</th>
+                                <th>Quê quán</th>
+                                <th>Thời gian nhận</th>
+                                <th>Tên bài viết</th>
+                                <th style="min-width:30px">Đã trả lời</th>
+                                <th>Ghi chú</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                i = i + 1;
+                                <tr>
+                                    <td>@i</td>
+
+                                    <td>
+                                        @item.HoTen
+                                    </td>
+
+                                    <td>
+                                        @item.Email
+                                    </td>
+                                    <td>
+                                        @item.SoDienThoai
+                                    </td>
+                                    <td>@item.QueQuan</td>
+                                    <td>
+                                        @item.ThoiGianNhan
+                                    </td>
+                                    <td>
+                                        @{
+                                            var bv = new SV.Models.Map.mapBaiVietTuyenSinh().ChiTiet(item.idBaiVietTuyenSinh);
+                                            if (bv != null)
+                                            {
+                                                <span>@bv.TenBaiViet</span>
+                                            }
+                                        }
+                                    </td>
+                                    <td>
+                                        @item.DaTraLoi
+                                    </td>
+                                    <td>
+                                        @item.GhiChu
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-xs btn-info" href="~/Admin/LienHeTuyenSinh/CapNhat?id=@item.ID">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </a>
+                                        <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/LienHeTuyenSinh/Xoa?id=@item.ID' }">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,94 @@
+﻿@model IEnumerable<SV.Models.BaiVietTuyenSinh>
+
+@{
+    ViewBag.Title = "Danh sách bài viết";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+
+}
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Bài viết tuyển sinh</a>
+        </li>
+        <li>
+            <a href="#">Danh sách</a>
+        </li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Danh sách bài tuyển sinh
+            </small>
+            <a class="btn btn-success btn-xs pull-right" href="~/Admin/BaiVietTuyenSinh/ThemMoi">Thêm mới</a>
+        </h1>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table  table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center" style="width:50px">
+                            STT
+                        </th>
+                        <th>
+                            Hình ảnh
+                        </th>
+                        <th>
+                            Tên bài viết
+                        </th>
+                        <th>
+                            Link
+                        </th>
+                        <th>
+                            Ngày bắt đầu
+                        </th>
+                        <th>
+                            Ngày kết thúc
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                <a href="~/Admin/BaiVietTuyenSinh/ChiTiet?id=@item.ID">
+                                    <img src="@item.HinhAnh" style="height:60px" />
+                                </a>
+                            </td>
+                            <td>
+                                <a href="~/Admin/BaiVietTuyenSinh/ChiTiet?id=@item.ID">
+                                    @item.TenBaiViet
+                                </a>
+                            </td>
+                            <td>
+                                @item.LinkSeo
+                            </td>
+                            <td>
+                                @string.Format("{0:dd/MM/yyyy}", item.NgayBatDau)
+                            </td>
+                            <td>
+                                @string.Format("{0:dd/MM/yyyy}", item.NgayKetThuc)
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-info" href="~/Admin/BaiVietTuyenSinh/CapNhat?id=@item.ID">
+                                    <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                </a>
+                                <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/BaiVietTuyenSinh/Xoa?id=@item.ID' }">
+                                    <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

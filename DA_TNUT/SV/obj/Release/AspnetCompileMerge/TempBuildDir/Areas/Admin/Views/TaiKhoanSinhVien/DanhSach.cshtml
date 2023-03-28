@@ -1,0 +1,91 @@
+﻿@model IEnumerable<SV.Models.SinhVien>
+
+@{
+    ViewBag.Title = "Danh sách tài khoản";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+    string sinhVien = ViewBag.sinhVien;
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Quản lý tài khoản</a>
+        </li>
+        <li>
+            <a href="#">Danh sách</a>
+        </li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Danh sách tài khoản sinh viên
+            </small>
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12 no-padding" style="margin-bottom:15px">
+            <form>
+                <div class="col-xs-3">
+                    <input class="form-control" name="sinhVien" value="@sinhVien" placeholder="Nhập tên , email, số điện thoại ..." />
+                </div>
+                <button class="btn btn-sm btn-info">Xem</button>
+            </form>
+        </div>
+        <div class="col-xs-12">
+            <table class="table  table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center" style="width:50px">
+                            STT
+                        </th>
+                        <th class="center">Tên đăng nhập</th>
+                        <th class="center">Họ và tên</th>
+                        <th class="center">Số điện thoại</th>
+                        <th class="center">Email</th>
+                        <th class="center">Ngày sinh</th>
+                        <th class="center">Lớp</th>
+                        <th class="center">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                <a href="~/Admin/TaiKhoanSinhVien/ChiTiet?id=@item.ID">@item.TenDangNhap </a>
+                            </td>
+                            <td>
+                                @item.HoVaTen
+                            </td>
+                            <td>
+                                @item.SoDienThoai
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td class="center">
+                                @string.Format("{0:dd/MM/yyyy}", item.NgaySinh)
+                            </td>
+                            <td>
+                                @item.Lop
+                            </td>
+                            <td>
+                                <a class="btn btn-xs @Html.Raw(item.isKhoa==true?"btn-success":"btn-danger") " href="/Admin/TaiKhoanSinhVien/Khoa?id=@item.ID">
+                                    @Html.Raw(item.isKhoa == true ? "Mở khóa" : "Khóa")  
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

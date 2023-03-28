@@ -1,0 +1,81 @@
+﻿@model SV.Models.Slide_HinhAnh
+
+@{
+    ViewBag.Title = "Cập Nhật";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+
+            <a href="~/admin/Slide/danhsach">Slide</a>
+        </li>
+        <li>
+            <a href="#">Cập Nhật</a>
+        </li>
+    </ul>
+    <div class="page-content">
+        <div class="page-header">
+            <h1>
+                <small>
+                    Cập nhật ảnh slide
+                </small>
+
+            </h1>
+        </div>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m=>m.idSlide)
+            @Html.HiddenFor(m=>m.ID)
+
+            <div class="form-horizontal">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="control-label col-md-2"> Tên Hình Ảnh</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.TenHinhAnh, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.TenHinhAnh, "", new { @class = "text-danger" })
+                    </div>
+                
+                    <label class="control-label col-md-2"> Mô Tả</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2"> Hình Ảnh</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.HinhAnh, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.HinhAnh, "", new { @class = "text-danger" })
+                    </div>
+                
+                    <label class="control-label col-md-2"> Thứ Tự</label>
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.ThuTu, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ThuTu, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-2">Liên kết</label>
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.LienKet, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.LienKet, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-success btn-sm" />
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

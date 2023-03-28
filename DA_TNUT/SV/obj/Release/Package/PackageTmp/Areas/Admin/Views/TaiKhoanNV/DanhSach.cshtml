@@ -1,0 +1,74 @@
+﻿@model IEnumerable<SV.Models.TaiKhoanNV>
+
+@{
+    ViewBag.Title = "Danh sách tài khoản nhân viên";
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="#">Nhân viên</a>
+        </li>
+        <li>
+            <a href="#">Danh sách</a>
+        </li>
+    </ul>
+</div>
+
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Danh sách tài khoản nhân viên
+            </small>
+            <a class="btn btn-success btn-xs pull-right" href="~/Admin/TaiKhoanNV/ThemMoi">Thêm mới</a>
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="table  table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th class="center" style="width:50px">
+                            STT
+                        </th>
+                        <th class="center">Username</th>
+                        <th class="center">Họ và tên</th>
+                        <th class="center">Email</th>
+                        <th class="center">#</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        i++;
+                        <tr>
+                            <td>@i</td>
+                            <td>
+                                <a href="~/Admin/TaiKhoanNV/ChiTiet?id=@item.ID">@item.Username</a>
+                            </td>
+                            <td>
+                                @item.HoVaTen
+                            </td>
+                            <td>
+                                @item.Email
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-info" href="/Admin/TaiKhoanNV/CapNhat?id=@item.ID">
+                                    Sửa
+                                </a>
+                                <a class="btn btn-xs @Html.Raw(item.isKhoa==true?"btn-success":"btn-danger") " href="/Admin/TaiKhoanNV/Khoa?id=@item.ID">
+                                    @Html.Raw(item.isKhoa == true ? "Mở khóa" : "Khóa")
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

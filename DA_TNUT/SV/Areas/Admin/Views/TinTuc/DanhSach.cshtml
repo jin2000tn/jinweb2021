@@ -1,0 +1,85 @@
+﻿@model IEnumerable<SV.Models.TinTuc>
+@{
+    var lable = ViewBag.sukien == false ? "tin tức" : "sự kiện";
+    ViewBag.Title = "Danh sách " + lable;
+    Layout = "~/Areas/Admin/Views/Shared/layout-admin.cshtml";
+    int i = 0;
+}
+
+<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+    <ul class="breadcrumb">
+        <li>
+            <i class="ace-icon fa fa-home home-icon"></i>
+            <a href="~/Admin/TinTuc">Tin Tức</a>
+        </li>
+        <li>
+            <a href="~/Admin/TinTuc/DanhSach">Danh sách @lable</a>
+        </li>
+    </ul>
+</div>
+<div class="page-content">
+    <div class="page-header">
+        <h1>
+            <small>
+                Danh sách @lable
+            </small>
+            <a class="btn btn-success btn-xs pull-right" href="~/Admin/TinTuc/ThemMoi">Thêm mới</a>
+        </h1>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <table class="table  table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th class="center" style="width:50px">
+                                    STT
+                                </th>
+                                <th >Hình Ảnh</th>
+                                <th style="min-width:200px">Tiêu Đề</th>
+                                <th style="min-width:200px">Mô tả</th>
+                                <th style="min-width:100px">Thời Gian</th>
+                                <th style="min-width:100px">Tác giả</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                i++;
+                                <tr>
+                                    <td>@i</td>
+                                    <td>
+                                        <a href="~/Admin/TinTuc/ChiTiet?id=@item.ID">
+                                            <img src="@item.HinhAnh" style="height:60px" />
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="~/Admin/TinTuc/ChiTiet?id=@item.ID">
+                                            @item.TieuDe
+                                        </a>
+                                    </td>
+                                    <td>@item.TomTat</td>
+                                    <td>
+                                        @string.Format("{0:dd/MM/yyyy}", item.ThoiGian)
+                                    </td>
+                                    <td>@item.TacGia</td>
+                                    <td>
+                                        <a class="btn btn-xs btn-info" href="~/Admin/TinTuc/CapNhat?id=@item.ID">
+                                            <i class="ace-icon fa fa-pencil bigger-120"></i>
+                                        </a>
+                                        <button class="btn btn-xs btn-danger" onclick="if (confirm('Bạn có muốn xóa không') == true) { location.href ='/Admin/TinTuc/Xoa?id=@item.ID' }">
+                                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
